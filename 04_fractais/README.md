@@ -1,7 +1,3 @@
-Pen
-=====
+# ED2018.1
 
-
-Para instalar as dependencias no ubuntu 14.04::
-
-    sudo apt-get install g++ git libsfml-dev libsfml-audio2 libsfml-doc libsfml-graphics2 libsfml-network2 libsfml-system2 libsfml-window2
+Fiz essa tarefa com auxilio da minha dupla na parte lógica ,no caso do trigo , a do gelo fizemos juntos pensamos na logica e reproduzimos , e as outras individualmente.Minha maior dificuldade ainda foi a recursão mas com essas praticas estou melhorando o meu entendimento.Levei certa de 3 dias pra fazer essa tarefa.
