@@ -26,6 +26,22 @@ void gelo(Pen &p, int lado){
        }
 }
 
+void estrela(Pen &p, int dist){
+    int angulo = 72;
+    if(dist < 0.1){
+        return;
+    }
+    for(int  i = 0; i < 5; i++){
+        p.walk(dist);
+        estrela(p, dist/3);
+        p.setColor(0,0,144);
+        p.walk(-dist);
+        p.right(angulo);
+        p.walk(dist);
+        estrela(p, dist/3);
+    }
+}
+
 void trigo(Pen &p, int lado){
     int dec=3;
     int angulo=60;
@@ -92,6 +108,18 @@ void fractalTrigo(){
     p.wait();
 }
 
+void fractalEstrela(){
+    Pen p(1000, 700);
+    float dist = 120;
+    p.setXY(430, 300);
+    p.setColor(255,255,255);
+    p.setHeading(72);
+    p.setSpeed(200);
+    p.setThickness(1);
+    estrela(p, dist);
+    p.wait();
+}
+
 void fractalArvore(){
     Pen p(800, 600);
     //coloca o pincel na posicao x 300 y 500
@@ -118,8 +146,9 @@ void fractalTriangulo(){
 }
 
 int main(){
-    fractalArvore();
+    //fractalArvore();
     //fractalGelo();
+    fractalEstrela();
     //fractalTriangulo();
     //fractalTrigo();
     return 0;
