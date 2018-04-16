@@ -148,7 +148,7 @@ void fractalTriangulo(){
 int main(){
     //fractalArvore();
     //fractalGelo();
-    fractalEstrela();
+    //fractalEstrela();
     //fractalTriangulo();
     //fractalTrigo();
     return 0;
