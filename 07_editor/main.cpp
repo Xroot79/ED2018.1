@@ -79,7 +79,7 @@ int main()
                     Ambiente novoAmbiente = amb ;
                     ambientes.push_front(novoAmbiente);
                     if(amb.cursor != amb.texto.begin())
-                         amb.texto.pop_back();
+                         amb.texto.erase(amb.cursor++,amb.cursor--);
 
                     novoAmbiente = amb;
                     ambientes.push_back(novoAmbiente);
