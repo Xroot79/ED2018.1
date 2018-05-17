@@ -29,8 +29,9 @@ struct Ambiente{
 int main()
 {
     Ambiente amb;
+    list<Ambiente> controlZ;
+    list<Ambiente> controlR;
 
-    list<Ambiente> ambientes;
 
     sf::RenderWindow janela(sf::VideoMode(800, 600), "Janela");
 
@@ -43,56 +44,51 @@ int main()
             if(event.type == sf::Event::KeyPressed){
                 if(event.key.control && (event.key.code == sf::Keyboard::Z)){
                     cout << "control z" << endl;
-                    while(*amb.cursor != ' ' && *amb.cursor != '\n' && amb.cursor != amb.texto.begin() ){
-                        amb.cursor--;
+                    controlR.push_back(amb);
+                    if(!controlZ.empty()){
+                        amb = controlZ.back();
+                        controlZ.pop_back();
                     }
-                   Ambiente novoAmbiente=amb;
-                   if(!ambientes.empty()){
-                       amb = ambientes.front();
-                       ambientes.pop_front();
-                       amb.cursor=amb.texto.end();
-                   }else{
-                       ambientes.push_front(novoAmbiente);
-                       amb.cursor = amb.texto.erase(amb.cursor++,amb.texto.end());
-                   }
                 }
                 else if(event.key.control && (event.key.code == sf::Keyboard::R)){
                         cout << "control r" << endl;
-                        amb = ambientes.front();
-                        amb.cursor=amb.texto.end();
+                        if(!controlR.empty()){
+                            amb = controlR.back();
+                            controlR.pop_back();
+                            amb.cursor=amb.texto.end();
+                        }
                 }
                 else if((event.key.code >= sf::Keyboard::A) && (event.key.code <= sf::Keyboard::Z)){
                     char tecla = (event.key.code - sf::Keyboard::A) + 'a';
                     cout << tecla << endl;
                     amb.texto.insert(amb.cursor,tecla);
+                    controlZ.push_back(amb);
                 }
                 else if((event.key.code == sf::Keyboard::Return)){
                     cout << "enter" << endl;
                     amb.texto.insert(amb.cursor,'\n');
+                    controlZ.push_back(amb);
                 }
                 else if((event.key.code == sf::Keyboard::Space)){
                     cout << "espaco" << endl;
                     amb.texto.insert(amb.cursor,' ');
+                    controlZ.push_back(amb);
                 }
                 else if(event.key.code == sf::Keyboard::BackSpace){
                     cout << "backspace" << endl;
-                    Ambiente novoAmbiente = amb ;
-                    ambientes.push_front(novoAmbiente);
-                    if(amb.cursor != amb.texto.begin())
-                         amb.texto.erase(amb.cursor++,amb.cursor--);
 
-                    novoAmbiente = amb;
-                    ambientes.push_back(novoAmbiente);
+                    if(amb.cursor != amb.texto.begin())
+                        amb.texto.erase(amb.cursor++,amb.cursor--);
+
+
+                    controlZ.push_back(amb);
                 }
                 else if(event.key.code == sf::Keyboard::Delete){
                     cout << "delete" << endl;
-                    Ambiente novoAmbiente = amb ;
-                    ambientes.push_front(novoAmbiente);
                     if(amb.cursor != amb.texto.end())
                          amb.texto.erase(amb.cursor++);
 
-                    novoAmbiente = amb;
-                    ambientes.push_back(novoAmbiente);
+                    controlZ.push_back(amb);
                 }
                 else if(event.key.code == sf::Keyboard::Left){
                     if(amb.cursor != amb.texto.begin())
