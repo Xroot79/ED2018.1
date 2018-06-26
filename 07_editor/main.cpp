@@ -80,12 +80,13 @@ int main()
                     if(amb.cursor != amb.texto.begin()){
                         amb.cursor--;
                         amb.cursor = amb.texto.erase(amb.cursor);
-                    }
+                    }                    
 
                     controlZ.push_back(amb);
                 }
                 else if(event.key.code == sf::Keyboard::Delete){
                     cout << "delete" << endl;
+
                     if(amb.cursor != amb.texto.end())
                          amb.cursor=amb.texto.erase(amb.cursor++);
 
