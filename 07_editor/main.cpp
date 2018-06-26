@@ -78,15 +78,17 @@ int main()
                     cout << "backspace" << endl;
 
                     if(amb.cursor != amb.texto.begin())
-                        amb.texto.erase(amb.cursor++,amb.cursor--);
+                       amb.cursor = amb.texto.erase(amb.cursor,amb.cursor);
 
 
                     controlZ.push_back(amb);
                 }
                 else if(event.key.code == sf::Keyboard::Delete){
                     cout << "delete" << endl;
-                    if(amb.cursor != amb.texto.end())
-                         amb.texto.erase(amb.cursor++);
+                    if(amb.cursor != amb.texto.end()){
+                         amb.cursor++;
+                         amb.cursor = amb.texto.erase(amb.cursor);
+                    }
 
                     controlZ.push_back(amb);
                 }
