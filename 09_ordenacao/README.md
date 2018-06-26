@@ -1,0 +1,1 @@
+Fiz a atividade sozinho , estudei e refiz os codigos do merge_sort,quicksort e palma_sort.Aperfeiçoei u pouco mais de recursão , no mais supri minhas dificuldade aprendendo e refazendo os codigos , também comentei os mesmos afim de fixar os metodos.
