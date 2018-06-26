@@ -186,11 +186,12 @@ public:
     }
 
     void _rinserir_ordenado(Node * node, int value){
-       if(node->next == nullptr || node->next->value > value)
+       if(node == nullptr || node->value > value)
            return;
 
        _rinserir_ordenado(node->next,value);
-       node->next = new Node(value, node->next);
+       if(node->next != nullptr && node->next->value > value)
+          node->next = new Node(value, node->next);
     }
 
     void rinserir_ordenado(int value){
@@ -238,11 +239,12 @@ public:
 
 int main(){
     SList lista;
+    lista.rpush_back(0);
     lista.rpush_back(1);
-    lista.rpush_back(2);
-    lista.rpush_back(3);
     lista.rpush_back(4);
-    lista.rinserir_ordenado(0);
+    lista.rpush_back(6);
+    lista.rinserir_ordenado(3);
+    lista.rinserir_ordenado(5);
     lista.rshow();
     cout << lista.rsomar() <<endl;
     cout << lista.rmin() << endl;
